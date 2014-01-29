@@ -1,0 +1,9 @@
+<!-- REEM Xtion launcher in simulation-->
+<launch>
+
+  	<!-- reduce pointcloud generation in simulation -->
+ <node pkg="dynamic_reconfigure" type="dynparam" name="set_xtion_dyn_params" 
+ 	args='set /head_mount_xtion imager_rate 1.0'
+ 	output="screen" />
+
+</launch>
