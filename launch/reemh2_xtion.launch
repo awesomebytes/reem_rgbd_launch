@@ -1,0 +1,17 @@
+<!-- REEM Xtion launcher -->
+<launch>
+  	<!-- launch the openni driver -->
+  	<include file="$(find openni2_launch)/launch/openni2.launch" >
+      <arg name="camera" value="head_mount_xtion" />
+      <arg name="depth_registration" value="false" /> <!-- TODO: change this to true when we change everything to registered topic -->
+      <arg name="load_driver" value="true" />
+      <arg name="publish_tf" value="true" />
+      <arg name="respawn" default="true" /> <!-- We want to be able to trust that everything will be there... -->
+      <arg name="rgb_camera_info_url"   default="$(find reem_rgbd_launch)/config/rgb_PS1080_PrimeSense.yaml" />
+
+    </include>
+
+  	<!-- launch scripts that sets dynamic params after waiting for some seconds -->
+ <node pkg="reem_rgbd_launch" type="set_xtion_dyn_params.py" name="set_xtion_dyn_params" output="screen" />
+
+</launch>
